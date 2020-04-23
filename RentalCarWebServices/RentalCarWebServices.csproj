@@ -76,10 +76,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\Business\CarService.cs" />
+    <Compile Include="Models\Business\CarValidationsService.cs" />
+    <Compile Include="Models\Business\ReservationService.cs" />
+    <Compile Include="Models\Business\ReservationValidationsService.cs" />
     <Compile Include="Models\DAO\CarDAO.cs" />
+    <Compile Include="Models\DAO\ReservationDAO.cs" />
     <Compile Include="Models\DTO\Car.cs" />
     <Compile Include="Models\Database\GetConnection.cs" />
     <Compile Include="Models\Database\InitializeDb.cs" />
+    <Compile Include="Models\DTO\Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

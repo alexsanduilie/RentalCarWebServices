@@ -54,5 +54,31 @@ namespace RentalCarWebServices.Models.Business
                 throw new Exception("Error finding data: " + ex.Message);
             }
         }
+
+        public int confirmID(string column, string paramValue)
+        {
+            try
+            {
+                return carDAO.confirmID(column, paramValue);
+            }
+            catch (SqlException ex)
+            {
+                return 0;
+                throw new Exception("Error getting car ID: " + ex.Message);                
+            }
+        }
+
+        public int confirmOverallLocation(string column, string paramValue)
+        {
+            try
+            {
+                return carDAO.confirmOverallLocation(column, paramValue);
+            }
+            catch (SqlException ex)
+            {
+                return 0;
+                throw new Exception("Error getting location: " + ex.Message);                
+            }
+        }
     }
 }
