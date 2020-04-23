@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2318174f-3701-40d0-b315-885f6c1b9079" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7a12186b-af59-4a75-8795-125a082571f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="https://localhost:44344/ListCarsService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ListCarsService.wsdl" MetadataType="Wsdl" ID="7247aa18-3f47-41a7-996a-552a006cd616" SourceId="1" SourceUrl="https://localhost:44344/ListCarsService.asmx?wsdl" />
-    <MetadataFile FileName="ListCarsService.disco" MetadataType="Disco" ID="31635a07-13d1-4fd2-a028-f69a2394543f" SourceId="1" SourceUrl="https://localhost:44344/ListCarsService.asmx?disco" />
+    <MetadataFile FileName="ListCarsService.wsdl" MetadataType="Wsdl" ID="0d220319-0e73-4b8a-acb9-d22e7490013b" SourceId="1" SourceUrl="https://localhost:44344/ListCarsService.asmx?wsdl" />
+    <MetadataFile FileName="ListCarsService.disco" MetadataType="Disco" ID="79c63b37-ae93-480a-a846-c04340048d68" SourceId="1" SourceUrl="https://localhost:44344/ListCarsService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

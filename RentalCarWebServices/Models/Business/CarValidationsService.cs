@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace RentalCarWebServices.Models.Business
 {
@@ -42,7 +43,7 @@ namespace RentalCarWebServices.Models.Business
             }
         }
 
-        public bool validateCarPlate(string carPlate, string message)
+        public bool validateCarPlate(string carPlate)
         {
             bool plate = true;
             if (!String.IsNullOrEmpty(carPlate))
@@ -52,12 +53,10 @@ namespace RentalCarWebServices.Models.Business
                 {
                     if (!Regex.IsMatch(carPlate, "[A-Z]{2} [0-9]{2} [A-Z]{3}"))
                     {
-                        message = "Invalid input type, the car plate format should be: ZZ 00 ZZZ";
                         plate = false;
                     }
                     else
                     {
-                        message = "The requested car does not exist, please enter another car plate!";
                         plate = false;
                     }
                 }
@@ -65,7 +64,7 @@ namespace RentalCarWebServices.Models.Business
             return plate;
         }
 
-        public bool validateCarModel(string carModel, string message)
+        public bool validateCarModel(string carModel)
         {
             bool cl = true;
             if (!String.IsNullOrEmpty(carModel))
@@ -73,14 +72,13 @@ namespace RentalCarWebServices.Models.Business
                 int model = carService.confirmID("Model", carModel);
                 if (model == 0)
                 {
-                    message = "This model does not exist, please enter another model!";
                     cl = false;
                 }
             }
             return cl;
         }
 
-        public bool validateCity(string city, string message)
+        public bool validateCity(string city)
         {
             bool cl = true;
             if (!String.IsNullOrEmpty(city))
@@ -88,7 +86,6 @@ namespace RentalCarWebServices.Models.Business
                 int location = carService.confirmOverallLocation("Location", city);
                 if (location == 0)
                 {
-                    message = "This location does not exist, please enter another location!";
                     cl = false;
                 }
             }

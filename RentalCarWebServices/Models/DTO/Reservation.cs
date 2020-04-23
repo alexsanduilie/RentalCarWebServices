@@ -47,5 +47,19 @@ namespace RentalCarWebServices.Models.DTO
 
             return true;
         }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -593334014;
+            hashCode = hashCode * -1521134295 + carID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(carPlate);
+            hashCode = hashCode * -1521134295 + costumerID.GetHashCode();
+            hashCode = hashCode * -1521134295 + reservStatsID.GetHashCode();
+            hashCode = hashCode * -1521134295 + startDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + endDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(location);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(couponCode);
+            return hashCode;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using RentalCarDesktop.ListCarsServiceReference;
+﻿using RentalCarDesktop.ListCarServiceReference;
 using RentalCarWebServices.Models.Database.DAO;
 using System;
 using System.Collections.Generic;
@@ -14,8 +14,9 @@ namespace RentalCarDesktop
 {
     public partial class List_Available_Cars : Form
     {
-        List<ListCarsServiceReference.Car> cars;
-        ListCarsServiceReference.ListCarsServiceSoapClient listCarsServiceSoap = new ListCarsServiceReference.ListCarsServiceSoapClient();
+        List<ListCarServiceReference.Car> cars;
+        ListCarServiceReference.ListCarsServiceSoapClient listCarsServiceSoap = new ListCarServiceReference.ListCarsServiceSoapClient();
+        
         public List_Available_Cars()
         {
             InitializeComponent();
@@ -61,24 +62,24 @@ namespace RentalCarDesktop
             {
                 if (validateCarModel())
                 {
-                    cars = cars = returnAvailableCars();
+                    cars = returnAvailableCars();
                 }
             }
             else if (textBox1.Text == "" && textBox2.Text == "" && textBox5.Text != "")
             {
                 if (validateCity())
                 {
-                    cars = cars = returnAvailableCars();
+                    cars = returnAvailableCars();
                 }
             }
             else if (textBox1.Text == "" && textBox2.Text == "" && textBox5.Text == "")
             {
-                cars = cars = returnAvailableCars();
+                cars = returnAvailableCars();
             }
             else
             {
                 MessageBox.Show(" Each search field is independent, and ONLY the Car Plate is linked to the Start/End Dates;\n" +
-                            " You can search ONLY by a single criteria, or leave all criterias blank for returning all cars;\n");
+                                " You can search ONLY by a single criteria, or leave all criterias blank for returning all cars;\n");
                 label6.Text = "";
                 label7.Text = "";
                 label8.Text = "";
@@ -98,35 +99,63 @@ namespace RentalCarDesktop
             }
         }
 
+        
         private bool validateCarPlate()
         {
-            return listCarsServiceSoap.validateCarPlate(textBox1.Text, label6.Text);
+            bool plate = listCarsServiceSoap.validateCarPlate(textBox1.Text);
+            if (!plate)
+            {
+                label6.Text = "The car plate does not exist OR\n" +
+                              "the input type is invalid, the car plate format should be: ZZ 00 ZZZ";
+            }
+            return plate;
         }
 
         private bool validateCarModel()
         {
-            return listCarsServiceSoap.validateCarModel(textBox2.Text, label7.Text);
+            bool model = listCarsServiceSoap.validateCarModel(textBox2.Text);
+            if (!model)
+            {
+                label7.Text = "This model does not exist, please enter another model";
+            }
+            return model;
         }
 
         private bool validateCity()
         {
-            return listCarsServiceSoap.validateCity(textBox5.Text, label9.Text);
+            bool city = listCarsServiceSoap.validateCity(textBox5.Text);
+            if (!city)
+            {
+                label9.Text = "This location does not exist, please enter another location";
+            }
+            return city;
         }
 
         private bool validateDate()
         {
-            return listCarsServiceSoap.validateDate(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date, label8.Text);
+            bool date = listCarsServiceSoap.validateDate(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
+            if (!date)
+            {
+                label8.Text = "End Date should be equal or higher than Start Date";
+            }
+            return date;
         }
 
         private bool validateRentPeriod()
         {
             Reservation r = null;
-            return listCarsServiceSoap.validateRentPeriod(textBox1.Text, label8.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date, "INSERT", r);
+            bool period = listCarsServiceSoap.validateRentPeriod(textBox1.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date, "INSERT", r);
+            if (!period)
+            {
+                label8.Text = "The selected car was already rented in this period";
+            }
+            return period;
         }
 
-        private List<ListCarsServiceReference.Car> returnAvailableCars()
+        private List<ListCarServiceReference.Car> returnAvailableCars()
         {
-            return listCarsServiceSoap.searchCars(textBox1.Text, textBox2.Text, textBox5.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date).ToList();
+            List<ListCarServiceReference.Car> carsFound = listCarsServiceSoap.searchCars(textBox1.Text, textBox2.Text, textBox5.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date).ToList();
+            return carsFound;
         }
     }
 }

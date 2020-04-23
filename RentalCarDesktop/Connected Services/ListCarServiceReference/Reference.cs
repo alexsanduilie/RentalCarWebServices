@@ -8,12 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentalCarDesktop.ListCarsServiceReference {
+namespace RentalCarDesktop.ListCarServiceReference {
     using System.Data;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ListCarsServiceReference.ListCarsServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ListCarServiceReference.ListCarsServiceSoap")]
     public interface ListCarsServiceSoap {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
@@ -32,52 +32,52 @@ namespace RentalCarDesktop.ListCarsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/readAll", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        RentalCarDesktop.ListCarsServiceReference.Car[] readAll();
+        RentalCarDesktop.ListCarServiceReference.Car[] readAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/readAll", ReplyAction="*")]
-        System.Threading.Tasks.Task<RentalCarDesktop.ListCarsServiceReference.Car[]> readAllAsync();
+        System.Threading.Tasks.Task<RentalCarDesktop.ListCarServiceReference.Car[]> readAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/searchCars", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        RentalCarDesktop.ListCarsServiceReference.Car[] searchCars(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate);
+        RentalCarDesktop.ListCarServiceReference.Car[] searchCars(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/searchCars", ReplyAction="*")]
-        System.Threading.Tasks.Task<RentalCarDesktop.ListCarsServiceReference.Car[]> searchCarsAsync(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate);
+        System.Threading.Tasks.Task<RentalCarDesktop.ListCarServiceReference.Car[]> searchCarsAsync(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCarPlate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool validateCarPlate(string carPlate, string message);
+        bool validateCarPlate(string carPlate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCarPlate", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> validateCarPlateAsync(string carPlate, string message);
+        System.Threading.Tasks.Task<bool> validateCarPlateAsync(string carPlate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCarModel", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool validateCarModel(string carModel, string message);
+        bool validateCarModel(string carModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCarModel", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> validateCarModelAsync(string carModel, string message);
+        System.Threading.Tasks.Task<bool> validateCarModelAsync(string carModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCity", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool validateCity(string city, string message);
+        bool validateCity(string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateCity", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> validateCityAsync(string city, string message);
+        System.Threading.Tasks.Task<bool> validateCityAsync(string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateDate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool validateDate(System.DateTime startDate, System.DateTime endDate, string message);
+        bool validateDate(System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateDate", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> validateDateAsync(System.DateTime startDate, System.DateTime endDate, string message);
+        System.Threading.Tasks.Task<bool> validateDateAsync(System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateRentPeriod", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool validateRentPeriod(string plate, string message, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarsServiceReference.Reservation reservation);
+        bool validateRentPeriod(string plate, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarServiceReference.Reservation reservation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/validateRentPeriod", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> validateRentPeriodAsync(string plate, string message, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarsServiceReference.Reservation reservation);
+        System.Threading.Tasks.Task<bool> validateRentPeriodAsync(string plate, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarServiceReference.Reservation reservation);
     }
     
     /// <remarks/>
@@ -313,12 +313,12 @@ namespace RentalCarDesktop.ListCarsServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ListCarsServiceSoapChannel : RentalCarDesktop.ListCarsServiceReference.ListCarsServiceSoap, System.ServiceModel.IClientChannel {
+    public interface ListCarsServiceSoapChannel : RentalCarDesktop.ListCarServiceReference.ListCarsServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ListCarsServiceSoapClient : System.ServiceModel.ClientBase<RentalCarDesktop.ListCarsServiceReference.ListCarsServiceSoap>, RentalCarDesktop.ListCarsServiceReference.ListCarsServiceSoap {
+    public partial class ListCarsServiceSoapClient : System.ServiceModel.ClientBase<RentalCarDesktop.ListCarServiceReference.ListCarsServiceSoap>, RentalCarDesktop.ListCarServiceReference.ListCarsServiceSoap {
         
         public ListCarsServiceSoapClient() {
         }
@@ -355,60 +355,60 @@ namespace RentalCarDesktop.ListCarsServiceReference {
             return base.Channel.readAllInDataTableAsync();
         }
         
-        public RentalCarDesktop.ListCarsServiceReference.Car[] readAll() {
+        public RentalCarDesktop.ListCarServiceReference.Car[] readAll() {
             return base.Channel.readAll();
         }
         
-        public System.Threading.Tasks.Task<RentalCarDesktop.ListCarsServiceReference.Car[]> readAllAsync() {
+        public System.Threading.Tasks.Task<RentalCarDesktop.ListCarServiceReference.Car[]> readAllAsync() {
             return base.Channel.readAllAsync();
         }
         
-        public RentalCarDesktop.ListCarsServiceReference.Car[] searchCars(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate) {
+        public RentalCarDesktop.ListCarServiceReference.Car[] searchCars(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate) {
             return base.Channel.searchCars(plate, model, city, presentStartDate, presentEndDate);
         }
         
-        public System.Threading.Tasks.Task<RentalCarDesktop.ListCarsServiceReference.Car[]> searchCarsAsync(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate) {
+        public System.Threading.Tasks.Task<RentalCarDesktop.ListCarServiceReference.Car[]> searchCarsAsync(string plate, string model, string city, System.DateTime presentStartDate, System.DateTime presentEndDate) {
             return base.Channel.searchCarsAsync(plate, model, city, presentStartDate, presentEndDate);
         }
         
-        public bool validateCarPlate(string carPlate, string message) {
-            return base.Channel.validateCarPlate(carPlate, message);
+        public bool validateCarPlate(string carPlate) {
+            return base.Channel.validateCarPlate(carPlate);
         }
         
-        public System.Threading.Tasks.Task<bool> validateCarPlateAsync(string carPlate, string message) {
-            return base.Channel.validateCarPlateAsync(carPlate, message);
+        public System.Threading.Tasks.Task<bool> validateCarPlateAsync(string carPlate) {
+            return base.Channel.validateCarPlateAsync(carPlate);
         }
         
-        public bool validateCarModel(string carModel, string message) {
-            return base.Channel.validateCarModel(carModel, message);
+        public bool validateCarModel(string carModel) {
+            return base.Channel.validateCarModel(carModel);
         }
         
-        public System.Threading.Tasks.Task<bool> validateCarModelAsync(string carModel, string message) {
-            return base.Channel.validateCarModelAsync(carModel, message);
+        public System.Threading.Tasks.Task<bool> validateCarModelAsync(string carModel) {
+            return base.Channel.validateCarModelAsync(carModel);
         }
         
-        public bool validateCity(string city, string message) {
-            return base.Channel.validateCity(city, message);
+        public bool validateCity(string city) {
+            return base.Channel.validateCity(city);
         }
         
-        public System.Threading.Tasks.Task<bool> validateCityAsync(string city, string message) {
-            return base.Channel.validateCityAsync(city, message);
+        public System.Threading.Tasks.Task<bool> validateCityAsync(string city) {
+            return base.Channel.validateCityAsync(city);
         }
         
-        public bool validateDate(System.DateTime startDate, System.DateTime endDate, string message) {
-            return base.Channel.validateDate(startDate, endDate, message);
+        public bool validateDate(System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.validateDate(startDate, endDate);
         }
         
-        public System.Threading.Tasks.Task<bool> validateDateAsync(System.DateTime startDate, System.DateTime endDate, string message) {
-            return base.Channel.validateDateAsync(startDate, endDate, message);
+        public System.Threading.Tasks.Task<bool> validateDateAsync(System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.validateDateAsync(startDate, endDate);
         }
         
-        public bool validateRentPeriod(string plate, string message, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarsServiceReference.Reservation reservation) {
-            return base.Channel.validateRentPeriod(plate, message, presentStartDate, presentEndDate, condition, reservation);
+        public bool validateRentPeriod(string plate, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarServiceReference.Reservation reservation) {
+            return base.Channel.validateRentPeriod(plate, presentStartDate, presentEndDate, condition, reservation);
         }
         
-        public System.Threading.Tasks.Task<bool> validateRentPeriodAsync(string plate, string message, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarsServiceReference.Reservation reservation) {
-            return base.Channel.validateRentPeriodAsync(plate, message, presentStartDate, presentEndDate, condition, reservation);
+        public System.Threading.Tasks.Task<bool> validateRentPeriodAsync(string plate, System.DateTime presentStartDate, System.DateTime presentEndDate, string condition, RentalCarDesktop.ListCarServiceReference.Reservation reservation) {
+            return base.Channel.validateRentPeriodAsync(plate, presentStartDate, presentEndDate, condition, reservation);
         }
     }
 }

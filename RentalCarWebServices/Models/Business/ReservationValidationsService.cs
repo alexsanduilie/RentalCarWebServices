@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace RentalCarWebServices.Models.Business
 {
@@ -26,22 +27,17 @@ namespace RentalCarWebServices.Models.Business
         }
 
         private static ReservationService reservationService = ReservationService.Instance;
-        public bool validateDate(DateTime startDate, DateTime endDate, string message)
+        public bool validateDate(DateTime startDate, DateTime endDate)
         {
             bool date = true;
             if (startDate > endDate)
             {
-                message = "End Date should be equal or higher than Start Date!";
                 date = false;
-            }
-            else
-            {
-                message = "";
             }
             return date;
         }
 
-        public bool validateRentPeriod(string plate, string message, DateTime presentStartDate, DateTime presentEndDate, string condition, Reservation reservation)
+        public bool validateRentPeriod(string plate, DateTime presentStartDate, DateTime presentEndDate, string condition, Reservation reservation)
         {
             bool selectedDate = true;
             DateTime startDate;
@@ -70,12 +66,7 @@ namespace RentalCarWebServices.Models.Business
                 if (((presentStartDate <= endDate && presentEndDate >= startDate) && condition == "INSERT" && rStatus == 1) || (((presentStartDate <= endDate && presentEndDate >= startDate) && !reservation.Equals(dbR)) && condition == "UPDATE" && rStatus == 1))
                 {
                     selectedDate = false;
-                    message = "The selected car was already rented in this period!";
                     break;
-                }
-                else
-                {
-                    message = "";
                 }
             }
             return selectedDate;

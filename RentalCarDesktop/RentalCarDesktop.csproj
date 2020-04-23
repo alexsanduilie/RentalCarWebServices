@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ListCarsServiceReference\Reference.cs">
+    <Compile Include="Connected Services\ListCarServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -73,8 +73,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\ListCarsServiceReference\ListCarsService.wsdl" />
-    <None Include="Connected Services\ListCarsServiceReference\RentalCarDesktop.ListCarsServiceReference.Car.datasource">
+    <None Include="Connected Services\ListCarServiceReference\ListCarsService.wsdl" />
+    <None Include="Connected Services\ListCarServiceReference\RentalCarDesktop.ListCarServiceReference.Car.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -101,19 +101,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ListCarsServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\ListCarServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ListCarsServiceReference\ListCarsService.disco" />
+    <None Include="Connected Services\ListCarServiceReference\ListCarsService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ListCarsServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\ListCarServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ListCarsServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\ListCarServiceReference\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ListCarsServiceReference\Reference.svcmap">
+    <None Include="Connected Services\ListCarServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

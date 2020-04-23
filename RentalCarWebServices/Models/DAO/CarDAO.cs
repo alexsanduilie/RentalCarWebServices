@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Windows.Forms;
 
 namespace RentalCarWebServices.Models.Database.DAO
 {
@@ -162,8 +163,7 @@ namespace RentalCarWebServices.Models.Database.DAO
                 catch (Exception ex)
                 {
                     return no;
-                    throw new Exception("SQL error: " + ex.Message);
-                    
+                    throw new Exception("SQL error: " + ex.Message);                   
                 }
             }
 
@@ -233,6 +233,8 @@ namespace RentalCarWebServices.Models.Database.DAO
                     {
                         //MessageBox.Show(cars.Count() + " Cars found:\n\n" + message);
                         dr.Close();
+                        cmd.Parameters.Clear();
+                        cmd.Dispose();
                         return cars;
                     }
                     else
@@ -248,8 +250,7 @@ namespace RentalCarWebServices.Models.Database.DAO
                 catch (SqlException ex)
                 {
                     return null;
-                    throw new Exception("SQL error: " + ex.Message);
-                    
+                    throw new Exception("SQL error: " + ex.Message);                  
                 }
             }
 

@@ -57,33 +57,33 @@ namespace RentalCarWebServices
         }
 
         [WebMethod]
-        public bool validateCarPlate(string carPlate, string message)
+        public bool validateCarPlate(string carPlate)
         {
-            return carValidations.validateCarPlate(carPlate, message);
+            return carValidations.validateCarPlate(carPlate);
         }
 
         [WebMethod]
-        public bool validateCarModel(string carModel, string message)
+        public bool validateCarModel(string carModel)
         {
-            return carValidations.validateCarModel(carModel, message);
+            return carValidations.validateCarModel(carModel);
         }
 
         [WebMethod]
-        public bool validateCity(string city, string message)
+        public bool validateCity(string city)
         {
-            return carValidations.validateCity(city, message);
+            return carValidations.validateCity(city);
         }
 
         [WebMethod]
-        public bool validateDate(DateTime startDate, DateTime endDate, string message)
+        public bool validateDate(DateTime startDate, DateTime endDate)
         {
-            return reservationValidations.validateDate(startDate, endDate, message);
+            return reservationValidations.validateDate(startDate, endDate);
         }
 
         [WebMethod]
-        public bool validateRentPeriod(string plate, string message, DateTime presentStartDate, DateTime presentEndDate, string condition, Reservation reservation)
+        public bool validateRentPeriod(string plate, DateTime presentStartDate, DateTime presentEndDate, string condition, Reservation reservation)
         {
-            return reservationValidations.validateRentPeriod(plate, message, presentStartDate, presentEndDate, condition, reservation);
+            return reservationValidations.validateRentPeriod(plate, presentStartDate, presentEndDate, condition, reservation);
         }
     }
 }
