@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace RentalCarDesktop.ListCarServiceReference {
+    using System;
     using System.Data;
     
     
@@ -205,7 +206,21 @@ namespace RentalCarDesktop.ListCarServiceReference {
         private string locationField;
         
         private string couponCodeField;
-        
+
+        public Reservation(int carID, string carPlate, int costumerID, int reservStatsID, DateTime startDate, DateTime endDate, string location, string couponCode)
+        {
+            this.carID = carID;
+            this.carPlate = carPlate;
+            this.costumerID = costumerID;
+            this.reservStatsID = reservStatsID;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.location = location;
+            this.couponCode = couponCode;
+        }
+
+        public Reservation() { }
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public int carID {

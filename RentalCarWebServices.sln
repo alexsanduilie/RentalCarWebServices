@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCarWebServices", "Ren
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCarDesktop", "RentalCarDesktop\RentalCarDesktop.csproj", "{51FA3E8A-2A6A-43A3-90C6-9CF11A23F668}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCarWeb", "RentalCarWeb\RentalCarWeb.csproj", "{5F2B96AB-8D4D-424B-AFD0-EAFE7E312D1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{655B5097-6D6B-43C7-9BDC-CE6627AD2E4B} = {655B5097-6D6B-43C7-9BDC-CE6627AD2E4B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{51FA3E8A-2A6A-43A3-90C6-9CF11A23F668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51FA3E8A-2A6A-43A3-90C6-9CF11A23F668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51FA3E8A-2A6A-43A3-90C6-9CF11A23F668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2B96AB-8D4D-424B-AFD0-EAFE7E312D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2B96AB-8D4D-424B-AFD0-EAFE7E312D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2B96AB-8D4D-424B-AFD0-EAFE7E312D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2B96AB-8D4D-424B-AFD0-EAFE7E312D1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,7 +33,7 @@ namespace RentalCarWebServices.Models.DAO
 
         public DataTable readByPlate(string plate)
         {
-            string readSQL = "SELECT * FROM Reservations WHERE CarPlate = @plate;";
+            string readSQL = "SELECT * FROM " + table_Name + " WHERE CarPlate = @plate;";
             SqlDataAdapter dataAdapter;
             DataTable dt = new DataTable();
 
@@ -44,15 +44,17 @@ namespace RentalCarWebServices.Models.DAO
                     cmd.Parameters.AddWithValue("@plate", plate);
                     dataAdapter = new SqlDataAdapter(cmd);
                     dataAdapter.Fill(dt);
-
-                    cmd.Parameters.Clear();
-                    cmd.Dispose();
                     return dt;
                 }
-                catch (SqlException ex)
+                catch (SqlException)
                 {
                     return dt;
-                    throw new Exception("SQL error: " + ex.Message);                  
+                    throw;                  
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Dispose();
                 }
             }
 

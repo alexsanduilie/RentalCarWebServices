@@ -33,10 +33,10 @@ namespace RentalCarWebServices.Models.Business
             {
                 return reservationDAO.readByPlate(plate);
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 return null;
-                throw new Exception("Error finding data: " + ex.Message);               
+                throw;               
             }
         }
     }

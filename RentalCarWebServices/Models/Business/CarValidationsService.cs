@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Services.Protocols;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
@@ -32,14 +33,16 @@ namespace RentalCarWebServices.Models.Business
 
         public List<Car> searchCars(string plate, string model, string city, DateTime presentStartDate, DateTime presentEndDate)
         {
+            List<Car> cars = new List<Car>();
             try
             {
-                return carDAO.searchCars(plate, model, city, presentStartDate, presentEndDate);
+                cars = carDAO.searchCars(plate, model, city, presentStartDate, presentEndDate);
+                return cars;
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                return null;
-                throw new Exception("Error searching reservation: " + ex.Message);               
+                return cars;
+                throw;               
             }
         }
 

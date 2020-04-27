@@ -29,14 +29,16 @@ namespace RentalCarWebServices.Models.Business
 
         public DataTable readAllInDataTable()
         {
+            DataTable dt = new DataTable();
             try
             {
-                return carDAO.readAllInDataTable();
+                dt = carDAO.readAllInDataTable();
+                return dt;
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                return null;
-                throw new Exception("Error finding data: " + ex.Message);               
+                return dt;
+                throw;               
             }
         }
 
@@ -48,10 +50,10 @@ namespace RentalCarWebServices.Models.Business
                 cars = carDAO.readAll();
                 return cars;
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 return cars;
-                throw new Exception("Error finding data: " + ex.Message);
+                throw;
             }
         }
 
@@ -61,10 +63,10 @@ namespace RentalCarWebServices.Models.Business
             {
                 return carDAO.confirmID(column, paramValue);
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 return 0;
-                throw new Exception("Error getting car ID: " + ex.Message);                
+                throw;                
             }
         }
 
@@ -74,10 +76,10 @@ namespace RentalCarWebServices.Models.Business
             {
                 return carDAO.confirmOverallLocation(column, paramValue);
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 return 0;
-                throw new Exception("Error getting location: " + ex.Message);                
+                throw;                
             }
         }
     }

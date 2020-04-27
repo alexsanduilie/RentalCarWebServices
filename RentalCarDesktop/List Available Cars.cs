@@ -1,12 +1,15 @@
 ﻿using RentalCarDesktop.ListCarServiceReference;
 using RentalCarWebServices.Models.Database.DAO;
+//using RentalCarWebServices.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,7 +37,14 @@ namespace RentalCarDesktop
                 label10.Text = "All Cars";
                 DataTable cars = new DataTable();
                 listCarsServiceSoap.Open();
-                cars = listCarsServiceSoap.readAllInDataTable();
+                try
+                {
+                    cars = listCarsServiceSoap.readAllInDataTable();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("SQL error: " + ex.Message);
+                }               
                 dataGridView1.DataSource = cars;
             }
             label6.Text = "";
@@ -91,22 +101,27 @@ namespace RentalCarDesktop
                 dataGridView1.AutoGenerateColumns = true;
                 dataGridView1.DataSource = cars;
                 dataGridView1.Show();
-                label10.Text = "Available Cars based on selected criterias";
+                label10.Text = "Available Cars based on selected criterias -> ONLY the Car Plate is linked to Start / End Dates";
                 label6.Text = "";
                 label7.Text = "";
                 label8.Text = "";
                 label9.Text = "";
             }
         }
-
         
         private bool validateCarPlate()
         {
             bool plate = listCarsServiceSoap.validateCarPlate(textBox1.Text);
             if (!plate)
             {
-                label6.Text = "The car plate does not exist OR\n" +
-                              "the input type is invalid, the car plate format should be: ZZ 00 ZZZ";
+                if (!Regex.IsMatch(textBox1.Text, "[A-Z]{2} [0-9]{2} [A-Z]{3}"))
+                {
+                    label6.Text = "Invalid input type, the car plate format should be: ZZ 00 ZZZ";
+                }
+                else
+                {
+                    label6.Text = "This car plate does not exist, please enter another plate";
+                }
             }
             return plate;
         }
@@ -143,7 +158,8 @@ namespace RentalCarDesktop
 
         private bool validateRentPeriod()
         {
-            Reservation r = null;
+            //this reservation is just for testing, for not having a null one when the INSERT condtion is not met because the reservation status is <> 1 (when searching db records)
+            Reservation r = new Reservation(0, "", 0, 1, DateTime.Now, DateTime.Now, "", "");
             bool period = listCarsServiceSoap.validateRentPeriod(textBox1.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date, "INSERT", r);
             if (!period)
             {
@@ -154,8 +170,18 @@ namespace RentalCarDesktop
 
         private List<ListCarServiceReference.Car> returnAvailableCars()
         {
-            List<ListCarServiceReference.Car> carsFound = listCarsServiceSoap.searchCars(textBox1.Text, textBox2.Text, textBox5.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date).ToList();
-            return carsFound;
+            List<ListCarServiceReference.Car> carsFound = new List<ListCarServiceReference.Car>();
+            try
+            {
+                carsFound = listCarsServiceSoap.searchCars(textBox1.Text, textBox2.Text, textBox5.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date).ToList();
+                return carsFound;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("SQL error: " + ex.Message);
+                return carsFound;
+            }
+            
         }
     }
 }

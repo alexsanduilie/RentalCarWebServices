@@ -43,15 +43,17 @@ namespace RentalCarWebServices.Models.Database.DAO
                 {
                     dataAdapter = new SqlDataAdapter(cmd);
                     dataAdapter.Fill(dt);
-
-                    cmd.Parameters.Clear();
-                    cmd.Dispose();
                     return dt;
                 }
-                catch (SqlException ex)
+                catch (SqlException)
                 {
                     return dt;
-                    throw new Exception("SQL error: " + ex.Message);                    
+                    throw;                    
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Dispose();
                 }
             }
 
@@ -64,24 +66,26 @@ namespace RentalCarWebServices.Models.Database.DAO
 
             using (SqlCommand cmd = new SqlCommand(readSQL, getConnection.getConnection()))
             {
+                SqlDataReader dr = null;
                 try
                 {
-                    SqlDataReader dr = cmd.ExecuteReader();
-
+                    dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
                         cars.Add(new Car(Int32.Parse(dr["CarID"].ToString()), dr["Plate"].ToString(), dr["Manufacturer"].ToString(), dr["Model"].ToString(), Double.Parse(dr["PricePerDay"].ToString()), dr["Location"].ToString()));
                     }
-
+                    return cars;
+                }
+                catch (SqlException)
+                {
+                    return cars;
+                    throw;
+                }
+                finally
+                {
                     dr.Close();
                     cmd.Parameters.Clear();
                     cmd.Dispose();
-                    return cars;
-                }
-                catch (SqlException ex)
-                {
-                    return cars;
-                    throw new Exception("SQL error: " + ex.Message);
                 }
             }
 
@@ -102,10 +106,11 @@ namespace RentalCarWebServices.Models.Database.DAO
 
             using (SqlCommand cmd = new SqlCommand(getID, getConnection.getConnection()))
             {
+                SqlDataReader dr = null;
                 try
                 {
                     cmd.Parameters.AddWithValue("@param", paramValue);
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
                         if (column == "Location")
@@ -125,15 +130,18 @@ namespace RentalCarWebServices.Models.Database.DAO
                             }
                         }
                     }
+                    return no;
+                }
+                catch (SqlException)
+                {
+                    return no;
+                    throw;                   
+                }
+                finally
+                {
                     dr.Close();
                     cmd.Parameters.Clear();
                     cmd.Dispose();
-                    return no;
-                }
-                catch (Exception ex)
-                {
-                    return no;
-                    throw new Exception("SQL error: " + ex.Message);                   
                 }
             }
 
@@ -147,23 +155,27 @@ namespace RentalCarWebServices.Models.Database.DAO
 
             using (SqlCommand cmd = new SqlCommand(getID, getConnection.getConnection()))
             {
+                SqlDataReader dr = null;
                 try
                 {
                     cmd.Parameters.AddWithValue("@param", paramValue);
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
                         no = 1;
                     }
+                    return no;
+                }
+                catch (SqlException)
+                {
+                    return no;
+                    throw;                   
+                }
+                finally
+                {
                     dr.Close();
                     cmd.Parameters.Clear();
                     cmd.Dispose();
-                    return no;
-                }
-                catch (Exception ex)
-                {
-                    return no;
-                    throw new Exception("SQL error: " + ex.Message);                   
                 }
             }
 
@@ -196,6 +208,7 @@ namespace RentalCarWebServices.Models.Database.DAO
 
             using (SqlCommand cmd = new SqlCommand(searchSQL, getConnection.getConnection()))
             {
+                SqlDataReader dr = null;
                 try
                 {
                     cmd.Parameters.AddWithValue("@plate", plate);
@@ -203,7 +216,7 @@ namespace RentalCarWebServices.Models.Database.DAO
                     cmd.Parameters.AddWithValue("@location", city);
                     cmd.Parameters.AddWithValue("@presentStartDate", presentStartDate);
                     cmd.Parameters.AddWithValue("@presentEndDate", presentEndDate);
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    dr = cmd.ExecuteReader();
 
                     var message = "";
                     while (dr.Read())
@@ -224,33 +237,29 @@ namespace RentalCarWebServices.Models.Database.DAO
                     if (counter == 1)
                     {
                         //MessageBox.Show("Car successfully found:" + message);
-                        dr.Close();
-                        cmd.Parameters.Clear();
-                        cmd.Dispose();
                         return cars;
                     }
                     else if (counter > 1)
                     {
                         //MessageBox.Show(cars.Count() + " Cars found:\n\n" + message);
-                        dr.Close();
-                        cmd.Parameters.Clear();
-                        cmd.Dispose();
                         return cars;
                     }
                     else
                     {
                         //MessageBox.Show("No cars found for the specified criterias");
-                    }
+                    }                   
+                    return null;
+                }
+                catch (SqlException)
+                {
+                    return null;
+                    throw;                  
+                }
+                finally
+                {
                     dr.Close();
                     cmd.Parameters.Clear();
                     cmd.Dispose();
-                    return null;
-
-                }
-                catch (SqlException ex)
-                {
-                    return null;
-                    throw new Exception("SQL error: " + ex.Message);                  
                 }
             }
 

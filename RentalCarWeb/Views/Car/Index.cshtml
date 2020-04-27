@@ -1,0 +1,80 @@
+﻿@model IEnumerable<RentalCarWeb.ListCarsServiceReference.Car>
+
+@{
+    ViewBag.Title = "Cars List";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="form-horizontal">
+    <h4>Search Available Cars</h4>
+    <h4 class="error">@ViewBag.Message</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <form asp-controller="Car" asp-action="Index" method="get">
+        <p>
+            <div class="control-label col-md-2"><b>Car Plate</b></div>
+            <input type="text" name="plate" class="form-control text-danger"><br>
+            <div class="control-label col-md-2"><b>Car Model</b></div>
+            <input type="text" name="model" class="form-control text-danger"><br>
+            <div class="control-label col-md-2"><b>Start Date</b></div>
+            <div style="position: relative"><input type="text" name="startDate" class="form-control datePicker text-danger"></div><br>
+            <div class="control-label col-md-2"><b>End Date</b></div>
+            <div style="position: relative"><input type="text" name="EndDate" class="form-control datePicker text-danger"></div><br>
+            <div class="control-label col-md-2"><b>City</b></div>
+            <input type="text" name="city" class="form-control text-danger">
+            <br>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter availabe cars" class="btn btn-default" />
+            </div>
+        </p>
+    </form>
+</div>
+<br><br>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Car ID", "Index", new { sortOrder = ViewBag.IdSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Car Plate", "Index", new { sortOrder = ViewBag.PlateSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Manufacturer", "Index", new { sortOrder = ViewBag.ManufacturerSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.ModelSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParam })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.carID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+        </tr>
+    }
+
+</table>

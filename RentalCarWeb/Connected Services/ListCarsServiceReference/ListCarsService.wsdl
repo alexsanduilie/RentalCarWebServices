@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readAllInDataTable">
+        <s:complexType />
+      </s:element>
+      <s:element name="readAllInDataTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readAllInDataTableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="readAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="readAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="readAllResult" type="tns:ArrayOfCar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="tns:Car" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Car">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="manufacturer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="price" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="searchCars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="presentStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="presentEndDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchCarsResult" type="tns:ArrayOfCar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCarPlate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="carPlate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCarPlateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateCarPlateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCarModel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="carModel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCarModelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateCarModelResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateCityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateRentPeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="presentStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="presentEndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="condition" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reservation" type="tns:Reservation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Reservation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="carPlate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="costumerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="reservStatsID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="couponCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="validateRentPeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateRentPeriodResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="readAllInDataTableSoapIn">
+    <wsdl:part name="parameters" element="tns:readAllInDataTable" />
+  </wsdl:message>
+  <wsdl:message name="readAllInDataTableSoapOut">
+    <wsdl:part name="parameters" element="tns:readAllInDataTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="readAllSoapIn">
+    <wsdl:part name="parameters" element="tns:readAll" />
+  </wsdl:message>
+  <wsdl:message name="readAllSoapOut">
+    <wsdl:part name="parameters" element="tns:readAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:searchCars" />
+  </wsdl:message>
+  <wsdl:message name="searchCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:searchCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateCarPlateSoapIn">
+    <wsdl:part name="parameters" element="tns:validateCarPlate" />
+  </wsdl:message>
+  <wsdl:message name="validateCarPlateSoapOut">
+    <wsdl:part name="parameters" element="tns:validateCarPlateResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateCarModelSoapIn">
+    <wsdl:part name="parameters" element="tns:validateCarModel" />
+  </wsdl:message>
+  <wsdl:message name="validateCarModelSoapOut">
+    <wsdl:part name="parameters" element="tns:validateCarModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateCitySoapIn">
+    <wsdl:part name="parameters" element="tns:validateCity" />
+  </wsdl:message>
+  <wsdl:message name="validateCitySoapOut">
+    <wsdl:part name="parameters" element="tns:validateCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateDateSoapIn">
+    <wsdl:part name="parameters" element="tns:validateDate" />
+  </wsdl:message>
+  <wsdl:message name="validateDateSoapOut">
+    <wsdl:part name="parameters" element="tns:validateDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateRentPeriodSoapIn">
+    <wsdl:part name="parameters" element="tns:validateRentPeriod" />
+  </wsdl:message>
+  <wsdl:message name="validateRentPeriodSoapOut">
+    <wsdl:part name="parameters" element="tns:validateRentPeriodResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ListCarsServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readAllInDataTable">
+      <wsdl:input message="tns:readAllInDataTableSoapIn" />
+      <wsdl:output message="tns:readAllInDataTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="readAll">
+      <wsdl:input message="tns:readAllSoapIn" />
+      <wsdl:output message="tns:readAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchCars">
+      <wsdl:input message="tns:searchCarsSoapIn" />
+      <wsdl:output message="tns:searchCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateCarPlate">
+      <wsdl:input message="tns:validateCarPlateSoapIn" />
+      <wsdl:output message="tns:validateCarPlateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateCarModel">
+      <wsdl:input message="tns:validateCarModelSoapIn" />
+      <wsdl:output message="tns:validateCarModelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateCity">
+      <wsdl:input message="tns:validateCitySoapIn" />
+      <wsdl:output message="tns:validateCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateDate">
+      <wsdl:input message="tns:validateDateSoapIn" />
+      <wsdl:output message="tns:validateDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateRentPeriod">
+      <wsdl:input message="tns:validateRentPeriodSoapIn" />
+      <wsdl:output message="tns:validateRentPeriodSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ListCarsServiceSoap" type="tns:ListCarsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAllInDataTable">
+      <soap:operation soapAction="http://tempuri.org/readAllInDataTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAll">
+      <soap:operation soapAction="http://tempuri.org/readAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchCars">
+      <soap:operation soapAction="http://tempuri.org/searchCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCarPlate">
+      <soap:operation soapAction="http://tempuri.org/validateCarPlate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCarModel">
+      <soap:operation soapAction="http://tempuri.org/validateCarModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCity">
+      <soap:operation soapAction="http://tempuri.org/validateCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateDate">
+      <soap:operation soapAction="http://tempuri.org/validateDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRentPeriod">
+      <soap:operation soapAction="http://tempuri.org/validateRentPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ListCarsServiceSoap12" type="tns:ListCarsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAllInDataTable">
+      <soap12:operation soapAction="http://tempuri.org/readAllInDataTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readAll">
+      <soap12:operation soapAction="http://tempuri.org/readAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchCars">
+      <soap12:operation soapAction="http://tempuri.org/searchCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCarPlate">
+      <soap12:operation soapAction="http://tempuri.org/validateCarPlate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCarModel">
+      <soap12:operation soapAction="http://tempuri.org/validateCarModel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateCity">
+      <soap12:operation soapAction="http://tempuri.org/validateCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateDate">
+      <soap12:operation soapAction="http://tempuri.org/validateDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRentPeriod">
+      <soap12:operation soapAction="http://tempuri.org/validateRentPeriod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ListCarsService">
+    <wsdl:port name="ListCarsServiceSoap" binding="tns:ListCarsServiceSoap">
+      <soap:address location="https://localhost:44344/ListCarsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ListCarsServiceSoap12" binding="tns:ListCarsServiceSoap12">
+      <soap12:address location="https://localhost:44344/ListCarsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

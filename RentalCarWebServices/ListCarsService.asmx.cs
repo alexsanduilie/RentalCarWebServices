@@ -4,6 +4,7 @@ using RentalCarWebServices.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -35,25 +36,50 @@ namespace RentalCarWebServices
         public DataTable readAllInDataTable()
         {
             DataTable dt = new DataTable();
-            dt = carService.readAllInDataTable();
-            dt.TableName = "Cars";
-            return dt;
+            try
+            {
+                dt = carService.readAllInDataTable();
+                dt.TableName = "Cars";
+                return dt;
+            }
+            catch (SqlException)
+            {
+                return dt;
+                throw;
+            }           
         }
         
         [WebMethod]
         public List<Car> readAll()
         {
             List<Car> cars = new List<Car>();
-            cars = carService.readAll();
-            return cars;
+            try
+            {
+                cars = carService.readAll();
+                return cars;
+            }
+            catch (SqlException)
+            {
+                return cars;
+                throw;
+            }
         }
 
         [WebMethod]
         public List<Car> searchCars(string plate, string model, string city, DateTime presentStartDate, DateTime presentEndDate)
         {
             List<Car> cars = new List<Car>();
-            cars = carValidations.searchCars(plate, model, city, presentStartDate, presentEndDate);
-            return cars;
+            try
+            {
+                cars = carValidations.searchCars(plate, model, city, presentStartDate, presentEndDate);
+                return cars;
+            }
+            catch (SqlException)
+            {
+                return cars;
+                throw;
+            }
+            
         }
 
         [WebMethod]
