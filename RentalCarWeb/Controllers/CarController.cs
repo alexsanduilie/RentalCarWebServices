@@ -29,9 +29,9 @@ namespace RentalCarWeb.Controllers
                 listCarsServiceSoap.Open();
                 allCars = listCarsServiceSoap.readAll();
             }
-            catch(Exception ex)
+            catch
             {
-                ViewBag.Message = "Error: " + ex.Message;
+                return RedirectToAction("Menu", "Home");
             }
             
             switch (sortOrder)
