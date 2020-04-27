@@ -35,15 +35,15 @@ namespace RentalCarDesktop
             if (cars == null)
             {
                 label10.Text = "All Cars";
-                DataTable cars = new DataTable();
-                listCarsServiceSoap.Open();
+                DataTable cars = new DataTable();                
                 try
                 {
+                    listCarsServiceSoap.Open();
                     cars = listCarsServiceSoap.readAllInDataTable();
                 }
-                catch (SqlException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("SQL error: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message);
                 }               
                 dataGridView1.DataSource = cars;
             }

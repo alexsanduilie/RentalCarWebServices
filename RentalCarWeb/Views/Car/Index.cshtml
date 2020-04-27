@@ -34,22 +34,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Car ID", "Index", new { sortOrder = ViewBag.IdSortParam })
+            @Html.ActionLink("Car ID", "Index", new { sortOrder = ViewBag.IdSortParam, city = Request.QueryString["city"] })
         </th>
         <th>
-            @Html.ActionLink("Car Plate", "Index", new { sortOrder = ViewBag.PlateSortParam })
+            @Html.ActionLink("Car Plate", "Index", new { sortOrder = ViewBag.PlateSortParam, city = Request.QueryString["city"] })
         </th>
         <th>
-            @Html.ActionLink("Manufacturer", "Index", new { sortOrder = ViewBag.ManufacturerSortParam })
+            @Html.ActionLink("Manufacturer", "Index", new { sortOrder = ViewBag.ManufacturerSortParam, city = Request.QueryString["city"] })
         </th>
         <th>
-            @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.ModelSortParam })
+            @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.ModelSortParam, city = Request.QueryString["city"] })
         </th>
         <th>
-            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam })
+            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam, city = Request.QueryString["city"] })
         </th>
         <th>
-            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParam })
+            @Html.ActionLink("Location", "Index", new { sortOrder = ViewBag.LocationSortParam, city = Request.QueryString["city"] })
         </th>
     </tr>
 

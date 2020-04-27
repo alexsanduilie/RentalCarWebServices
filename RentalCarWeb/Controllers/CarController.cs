@@ -26,11 +26,12 @@ namespace RentalCarWeb.Controllers
 
             try
             {
+                listCarsServiceSoap.Open();
                 allCars = listCarsServiceSoap.readAll();
             }
-            catch(SqlException ex)
+            catch(Exception ex)
             {
-                ViewBag.Message = "SQL error: " + ex.Message;
+                ViewBag.Message = "Error: " + ex.Message;
             }
             
             switch (sortOrder)
