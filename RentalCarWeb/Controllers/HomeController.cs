@@ -21,7 +21,7 @@ namespace RentalCarWeb.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Message = "Error: " + ex.Message;
+                ViewBag.Message2 = "Error: " + ex.Message;
             }            
             return View();
         }
